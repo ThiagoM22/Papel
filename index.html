@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desamasse a folha</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(129, 6, 68);
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        display: flex;
+        margin-top: 70px;
+        margin-bottom: 50px;
+        font-size: 40px;
+      }
+      img {
+        width: 150px;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+      img.hidden {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      img.gato {
+        width: 150px;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      }
+      img.gato.animate {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      .alinhar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      button {
+        margin-top: 50px;
+        width: 150px;
+        height: 50px;
+        background-color: rgb(255, 255, 255);
+        border: 2px solid #ffffff;
+        color: black;
+        font-size: 20px;
+        margin-bottom:50px
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: rgb(0, 0, 0);
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        transition: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Desamasse a folha</h1>
+    <div class="alinhar">
+      <img
+        id="image"
+        src="./img/Design sem nome (6).png"
+        alt="Folha amassada"
+      />
+      <button onclick="desamassar()">Desamasse</button>
+      <img
+        id="gato"
+        class="gato"
+        src="./img/gato.gif"
+        alt="Gato animado"
+        style="display: none"
+      />
+    </div>
+    <script>
+      function desamassar() {
+        const img = document.getElementById("image");
+        const gato = document.getElementById("gato");
+
+        // Animação para a folha
+        img.classList.add("hidden"); // Adiciona a classe para animação de saída
+
+        setTimeout(() => {
+          img.src = "./img/folha.png"; // Substitui a imagem
+          img.alt = "Folha desamassada";
+          img.classList.remove("hidden"); // Remove a classe para animação de entrada
+
+          // Exibe o gato com animação
+          gato.style.display = "block"; // Torna o gato visível
+          setTimeout(() => {
+            gato.classList.add("animate"); // Adiciona a classe para animação de entrada
+          }, 500); // Tempo para iniciar a animação do gato
+        }, 500); // Tempo da animação de saída da folha
+      }
+    </script>
+  </body>
+</html>
